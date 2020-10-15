@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
-import Header from './components/layout/header.js'
-import Todos from './components/Todos';
-import addTodo from './components/addTodo'
-import './App.css'
+import Header from './components/layout/Header.js';
+import Todos from './components/Todos.js';
+import AddTodo from './components/AddTodo.js';
+import {v4} from 'uuid';
+import './App.css';
 
 export class App extends Component {
   state = {
     todos: [
       {
-      id: 1,
+      id: v4(),
       title: "Take the trash out.",
       completed: false
     },{
-      id: 2,
+      id: v4(),
       title: "Water the plants.",
       completed: true
     },{
-      id: 3,
+      id: v4(),
       title: "Wash the car.",
       completed: false
     },
@@ -34,17 +35,29 @@ export class App extends Component {
     })
   }
 
+  // Add TODO Tasks
+  addTodo = (title) => {
+    const newTodo = {
+      id: v4(),
+      title: title,
+      completed:false,
+    }
+    this.setState({ todos: [...this.state.todos, newTodo]})
+    // const prevState = this.state;
+    // this.setState({ todos: [...this.state.todos.filter(todo => todo.completed === false)]})
+    // this.setState({ todos: [...this.state.todos, [...prevState.filter(todo => todo.completed === false)]]})
+  }
+
   // Delete TODO
   delTodo = (id) => {
     this.setState( { todos: [...this.state.todos.filter(todo => todo.id !== id)]} );
-    // console.log(id)
   } 
 
   render() {
     return (
       <div classname="App">
         <Header />
-        <addTodo />
+        <AddTodo addTodo={this.addTodo}/>
         <Todos todos={this.state.todos} markCompleted={ this.markCompleted } delTodo={ this.delTodo } />
       </div>
     )
