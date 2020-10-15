@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
-        <header>
-            <h1 style={ headerStyle }>TodoList</h1>
+        <header style={ headerStyle }>
+            <h1>TodoList</h1>
+            <Link to='/' style={linkStyle} > Home </Link> | <Link to='/about' style={linkStyle} > About </Link>
         </header>
     )
 }
@@ -13,7 +15,13 @@ const headerStyle = {
     color: '#fff',
     textAlign: 'center',
     padding: '15px',
-    borderRadius: '7px'    
+    borderRadius: '7px',    
+}
+
+const linkStyle = {
+    color: '#fff',
+    textAlign: 'center',
+    padding: '15px'
 }
 
 export default Header
