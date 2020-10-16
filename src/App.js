@@ -18,7 +18,7 @@ export class App extends Component {
     },{
       id: v4(),
       title: "Water the plants.",
-      completed: true
+      completed: false
     },{
       id: v4(),
       title: "Wash the car.",
@@ -46,9 +46,6 @@ export class App extends Component {
       completed:false,
     }
     this.setState({ todos: [...this.state.todos, newTodo]})
-    // const prevState = this.state;
-    // this.setState({ todos: [...this.state.todos.filter(todo => todo.completed === false)]})
-    // this.setState({ todos: [...this.state.todos, [...prevState.filter(todo => todo.completed === false)]]})
   }
 
   // Delete TODO
